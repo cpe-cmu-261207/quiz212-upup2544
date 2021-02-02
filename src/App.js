@@ -1,5 +1,13 @@
+import { useState } from "react";
 function App() {
+  const num = [620610791];
+  const [counter, setcounter] = useState(620610791);
   const persons = [
+    {
+      name: "Thanachok Wirotsasithon 620610791",
+      gender: "male",
+      age: "20"
+    },
     {
       name: "Bob",
       gender: "male",
@@ -16,28 +24,52 @@ function App() {
       {/* Code me please! */}
       <div class="mb-4">
         <h3 class="title is-3">ID Counter</h3>
-        <p>YOUR ID HERE</p>
-        <button>-</button>
-        <button>reset</button>
-        <button>+</button>
+        <p>{counter}</p>
+        <button
+          onClick={() => {
+            setcounter(Number(counter - 1));
+          }}
+        >
+          -
+        </button>
+        <button
+          onClick={() => {
+            setcounter(Number(num));
+          }}
+        >
+          reset
+        </button>
+        <button
+          onClick={() => {
+            setcounter(Number(counter + 1));
+          }}
+        >
+          +
+        </button>
       </div>
 
       {/* Convert me to a component! */}
       <h3 class="title is-3">Person List</h3>
-      <table class="table is-bordered mb-3">
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-          </tr>
-          <tr>
-            <td>Bob</td>
-            <td>male</td>
-            <td>50</td>
-          </tr>
-        </tbody>
-      </table>
+      {persons.map((item) => {
+        return (
+          <div>
+            <table class="table is-bordered mb-3">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Age</th>
+                </tr>
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.gender}</td>
+                  <td>{item.age}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      })}
     </div>
   );
 }
